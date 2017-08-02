@@ -1,0 +1,123 @@
+/* ==========================================================================
+   #UI BREADCRUMBS
+   ========================================================================== */
+
+
+/*
+ * Simple breadcrumb styling to apply to (ordered) lists. Extends `.nav`, e.g.:
+ *
+   <ol class="nav  breadcrumb">
+       <li><a href=#>Home</a></li>
+       <li><a href=#>About</a></li>
+       <li><a href=#>The Board</a></li>
+       <li class=current><a href=#>Directors</a></li>
+   </ol>
+ */
+
+@if $add-ui-css {
+
+.breadcrumb > li + li:before{
+    content:"\00BB" "\00A0";
+}
+
+
+/**
+ * For denoting a path-like structure, GitHub style, e.g.:
+ *
+   <ol class="nav  breadcrumb--path">
+       <li class=breadcrumb__root><a href=#>inuit.css</a></li>
+       <li><a href=#>inuit.css</a></li>
+       <li><a href=#>partials</a></li>
+       <li class=current><a href=#>objects</a></li>
+   </ol>
+ *
+ */
+.breadcrumb--path > li + li:before{
+    content:"\002F" "\00A0";
+}
+
+
+/**
+ * Assign a delimiter on the fly through a data attribute, e.g.:
+ *
+   <ol class="nav  breadcrumb">
+       <li><a href=#>Home</a></li>
+       <li data-breadcrumb="|"><a href=#>About</a></li>
+       <li data-breadcrumb="|"><a href=#>The Board</a></li>
+       <li data-breadcrumb="|" class=current><a href=#>Directors</a></li>
+   </ol>
+ *
+ */
+.breadcrumb > li + li[data-breadcrumb]:before{
+    content:attr(data-breadcrumb) "\00A0";
+}
+
+
+/**
+ * Denote the root of the tree.
+ */
+.breadcrumb__root{
+    font-weight:bold;
+}
+
+}//endif
+
+
+.options>li>a {
+    border: 0 solid #ccc;
+    border-width: 1px;
+    border-left-width: 0
+}
+
+.options>li:first-child>a {
+    border-left-width: 1px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+
+.options>li:last-child>a {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px
+}
+
+.pagination {
+    text-align: center;
+    letter-spacing: -0.31em;
+    word-spacing: -0.43em
+}
+
+.pagination>li {
+    padding: 12px;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.pagination>li>a {
+    padding: 12px;
+    margin: -12px
+}
+
+.pagination__first a:before {
+    content: "« "
+}
+
+.pagination__last a:after {
+    content: " »"
+}
+
+.breadcrumb>li+li:before {
+    content: "» "
+}
+
+.breadcrumb--path>li+li:before {
+    content: "/ "
+}
+
+.breadcrumb>li+li[data-breadcrumb]:before {
+    content: attr(data-breadcrumb) " "
+}
+
+.breadcrumb__root {
+    font-weight: bold
+}
+

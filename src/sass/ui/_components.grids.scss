@@ -1,0 +1,121 @@
+/* ==========================================================================
+   #UI GRIDS
+   ==========================================================================*/
+
+
+/*
+
+ */
+
+// Columns
+$cols-12: (1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr);
+$cols-10: (1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr);
+$cols-8: (1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr);
+$cols-6: (1fr 1fr 1fr 1fr 1fr 1fr);
+$cols-5: (1fr 1fr 1fr 1fr 1fr);
+$cols-4: (1fr 1fr 1fr 1fr);
+$cols-3: (1fr 1fr 1fr);
+$cols-2: (1fr 1fr);
+$cols-1: (1fr);
+@mixin grid($cols, $rows) {
+  display: grid;
+  grid-template-columns: $cols;
+  grid-template-rows: $rows;
+  grid-column-gap: $unit-small;
+  grid-row-gap: $unit-small;
+  grid-auto-flow: row;
+  justify-content: stretch;
+}
+
+@mixin item($row, $column, $colspan: 1, $rowspan: 1) {
+  grid-row-start: $row;
+  grid-column-start: $column;
+  @if($colspan !=1) {
+    grid-column-end: $column + $colspan;
+  }
+  @if($rowspan !=1) {
+    grid-row-end: $row + $rowspan;
+  }
+}
+
+.o-grid--12-col {
+  display: grid;
+  @include grid($cols-12, auto);
+}
+
+.o-grid--10-col {
+  @include grid($cols-10, auto);
+}
+
+.o-grid--8-col {
+  @include grid($cols-8, auto);
+}
+
+.o-grid--6-col {
+  @include grid($cols-6, auto);
+}
+
+.o-grid--5-col {
+  @include grid($cols-5, auto);
+}
+
+.o-grid--4-col {
+  @include grid($cols-4, auto);
+}
+
+.o-grid--3-col {
+  @include grid($cols-3, auto);
+}
+
+.o-grid--2-col {
+  @include grid($cols-2, auto);
+}
+
+.o-grid--1-col {
+  @include grid($cols-1, auto);
+}
+
+.o-grid {
+  display: grid;
+  grid-column-gap: $unit-base;
+  grid-row-gap: $unit-base;
+  /* Sass doesn't support the bracket syntax
+   * so we can't do grid-columns: 1% (1% 1fr)[12]
+   * neither can we do grid-columns: 1% repeat(12, 1% 1fr);
+   * So we hard code our value
+   */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  justify-content: stretch;
+}
+
+[class^="o-grid__item"] {
+  padding: 1px;
+  border-radius: $global-radius;
+}
+
+.o-grid__demo-item {
+  background: $brand-color;
+}
+
+.o-grid__demo-img {
+  background: #fefefe;
+  height: 100%;
+}
+
+.o-grid__demo-item-big {
+  @include item(1, 1, 1, 1);
+}
+
+.item-2 {
+  @include item(2, 2, 5);
+}
+
+.item-3 {
+  @include item(3, 1, 12);
+}
+
+.item-4 {
+  @include item(4, 2, 2);
+}

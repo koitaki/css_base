@@ -1,0 +1,64 @@
+/* ==========================================================================
+   #UI BASE
+   ========================================================================== */
+
+
+/*
+
+ */
+
+@if $add-ui-css {
+  pre,
+  plaintext,
+  listing {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0px;
+  }
+  pre,
+  code {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0;
+  }
+  code {
+    padding: 2px 4px;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+  }
+  pre {
+    display: block;
+    padding: 8px 15px;
+    margin: 0 0 10px;
+    // font-size: 13px;
+    // line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    // color: #333;
+    background-color: #f5f5f5;
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 4px;
+  }
+  body {
+    font-family: "Open Sans", sans-serif;
+    p {
+      // font-size: $font-p-size;
+      color: $font-p-color;
+    }
+    ul {
+      background: #FFF;
+      border-radius: $global-radius;
+      padding: 50px;
+    }
+  }
+  section {
+    margin-bottom: $unit-large;
+  }
+}

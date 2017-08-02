@@ -1,0 +1,35 @@
+/* ==========================================================================
+   #UI HEADERS
+   ========================================================================== */
+
+/*
+
+ */
+
+@if $add-ui-css {
+
+  // Set a consistent style for headings.
+  @mixin heading($font-size, $color: $font-h-color) {
+    font-size: $font-size;
+    font-family: $font-face-header;
+    color: $color;
+}
+
+    .c-heading-page {
+      @include heading(4rem,  $brand-color);
+      text-shadow: 1px 1px 3px $font-h-color;
+    }
+    .c-heading-main {
+      @include heading(2rem);
+    }
+    .c-heading-sub {
+      @include heading(1.8rem);
+    }
+    .c-heading-banner {
+      @include heading(1.5rem);
+    }
+    .c-heading-section {
+      @include heading(1.25rem);
+    }
+
+}

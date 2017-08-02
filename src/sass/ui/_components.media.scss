@@ -1,0 +1,129 @@
+/* ==========================================================================
+   #UI MEDIA
+   ========================================================================== */
+
+
+/*
+
+ */
+
+@mixin media($flip, $gap) {
+  display: grid;
+  grid-column-gap: $gap;
+  @if $flip {
+    grid-template-areas: "title img" "body img" "footer footer";
+  } else {
+    grid-template-areas: "img title" "img body" "footer footer";
+  }
+}
+
+.c-media {
+  @include media(false, $unit-base);
+  margin-bottom: 1em;
+  border: 2px solid #666;
+  padding: $unit-small;
+}
+
+.c-media--flip {
+  @include media(true, $unit-base);
+  margin-bottom: 1em;
+  border: 2px solid #666;
+  padding: $unit-small;
+}
+
+.c-media__title {
+  grid-area: title;
+  &--top {
+    vertical-align: top;
+  }
+  &--middle {
+    vertical-align: middle;
+  }
+  &--bottom {
+    vertical-align: bottom;
+  }
+}
+
+.c-media__img {
+  grid-area: img;
+}
+
+.c-media__content {
+  grid-area: body;
+}
+
+.c-media__footer {
+  grid-area: footer;
+}
+
+@media (min-width: 600px) {
+  /* clearfix*/
+  .c-media:after {
+    content: "";
+    display: block;
+    clear: both;
+    @include inuit-clearfix();
+  }
+  .c-media>.c-media {
+    margin-left: 160px;
+    clear: both;
+  }
+  .c-media__img {
+    float: left;
+    margin: 0 10px 0 0;
+    width: 150px;
+  }
+  .c-media__footer {
+    background-color: #eee;
+    padding: 10px;
+  }
+  .c-media__img .c-media__img--flip {
+    float: right;
+    margin: 0 0 0 10px;
+  }
+  .c-media>* {
+    margin: 0 0 0 160px;
+  }
+  .c-media.c-media__img-flip>* {
+    margin: 0 160px 0 0;
+  }
+  @supports(display: grid) {
+    /* override */
+    .c-media>*,
+    .c-media.c-media-flip>* {
+      margin: 0;
+    }
+    .c-media .img,
+    .c-media.c-media-flip .img {
+      width: auto;
+      margin: 0;
+    }
+    .c-media:after {
+      content: none;
+    }
+    .c-media {
+      display: grid;
+      grid-column-gap: 20px;
+      grid-template-columns: 150px 3fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: "img title" "img body" "footer footer";
+    }
+    .c-media.c-media-flip {
+      grid-template-columns: 3fr 150px;
+      grid-template-areas: "title img" "body img" "footer footer";
+    }
+    .c-media.img-flexie {
+      grid-template-columns: minmax(150px, 1fr) 3fr;
+    }
+    .c-media.c-media-flip.img-flexie {
+      grid-template-columns: 3fr minmax(150px, 1fr);
+    }
+    /* nested */
+    .c-media>.c-media {
+      grid-column: 2 / -1;
+      margin: 0;
+      /* override */
+      margin-top: 1em;
+    }
+  }
+}

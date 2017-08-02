@@ -1,0 +1,63 @@
+/* ==========================================================================
+   #UI FONT-AWESOME
+   ========================================================================== */
+
+
+/*
+
+ */
+
+$fa-color-icon: hsl(0, 0%, 40%);
+$fa-color-icon-value: hsl(0, 100%, 34%);
+@mixin grid-fa() {
+  // width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+  grid-template-rows: auto;
+  grid-column-gap: 2px;
+  grid-row-gap: $unit-small;
+  grid-auto-flow: row;
+  // justify-content: stretch;
+}
+
+.v-fa-list {
+  padding: $unit-small;
+}
+
+.fa-grid__item {
+  @include grid-fa();
+  // display: inline-block;
+  padding: 5px 5px;
+  border: 1px solid #777;
+  background-color: #efefef;
+  &:hover {
+    background-color: darken(#efefef, 5%);
+  }
+  & i {
+    text-align: center;
+    // margin-right: 20px;
+    &:before {
+      font-size: $font-size-base;
+      position: relative;
+      top: 4px;
+      color: $fa-color-icon;
+    }
+  }
+  & i.fa {
+    // width: 2em;
+  }
+  & span {
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: $font-size-small;
+    padding: 0;
+  }
+  & .icon-name {
+    // width: 10em;
+    text-align: left;
+  }
+  & .icon-value {
+    // width: 4em;
+    color: $fa-color-icon-value;
+  }
+}
