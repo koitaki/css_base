@@ -7,11 +7,46 @@
 
  */
 
+$color-yellow-500: hsl(50, 100, 50);
+$color-red-500: hsl(350, 75, 50);
+$color-blue-500: hsl(220,65,35);
+$color-gree-500: hsl(150, 100, 30);
+
+$primaryColor: hsl(150, 50%, 95%);
+$background-color: hsl(0, 0%, 98%);
+
+$font-h-color: $color-blue-500;
+$font-p-color: hsl(0, 0%, 10%);
+
+
+$sd-colors: (
+  'primary': #8e3329, 
+  'accent': #d98328,
+  'secondary': #5a1321,
+  'foreground': #191919,
+  'background': #e9e9e9
+);
+
+  @mixin addcolor($color: $font-h-color) {
+    color: $color;
+}
+
+
 @if $add-ui-css {
+
   body {
-    background-color: $background-color;
+    background-color: $brand-light;
+	p {
+	 	font-size: $font-p-size;
+      	color: $font-p-color;
+    }
   }
   .c-heading-page {
-    color: $brand-color;
+      @include addcolor($brand-color);
+      text-shadow: 1px 1px 3px $font-h-color;
   }
+
 }
+
+
+

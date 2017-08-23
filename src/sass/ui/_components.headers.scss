@@ -9,15 +9,13 @@
 @if $add-ui-css {
 
   // Set a consistent style for headings.
-  @mixin heading($font-size, $color: $font-h-color) {
+  @mixin heading($font-size) {
     font-size: $font-size;
     font-family: $font-face-header;
-    color: $color;
 }
 
     .c-heading-page {
-      @include heading(4rem,  $brand-color);
-      text-shadow: 1px 1px 3px $font-h-color;
+      @include heading(4rem);
     }
     .c-heading-main {
       @include heading(2rem);
